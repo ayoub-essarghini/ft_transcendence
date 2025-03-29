@@ -2,18 +2,182 @@
 @tailwind components;
 @tailwind utilities;
 
-.home-container {
-  @apply p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-lg;
+:root
+{
+    --color-primary: #101323;
+    --color-secondary: #f29620;
+    --color-accent: #f2f2f2;
+    --color-light: #f2f2f2;
+    --color-dark: #000000;
+    --color-white: #ffffff;
+    --color-gray-light: #e0e0e0;
+    --color-gray-medium-light: #d9d9d9;
+    --color-gray-medium: #b3b3b3;
+    --color-gray-dark: #808080;
+    --color-gray-darker: #666666;
 }
 
-.home-title {
-  @apply text-3xl font-bold text-gray-800 mb-6;
+h1 {
+  @apply text-4xl font-bold text-center ;
+}
+h2 {
+  @apply text-3xl font-semibold ;
+}
+h3 {
+  @apply text-2xl font-semibold  ;
+}
+h4 {
+  @apply text-xl font-semibold  ;
+}
+h5 {
+  @apply text-lg font-semibold  ;
+}
+h6 {
+  @apply text-base font-semibold ;
+}
+p {
+  @apply text-base  ;
 }
 
-.home-nav {
-  @apply flex space-x-4;
+.login-page {
+  background-color: #181c38d1;
+  position: relative;
+  background-image: url("../../public/assets/images/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: color-burn;
 }
 
-.home-link {
-  @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors;
+.login-form {
+  background-color: var(--color-primary);
+  color: rgb(238, 238, 238);
+  border: solid 1px var(--color-secondary);
 }
+
+
+/* Custom CSS for additional styling not covered by Tailwind */
+
+/* Glowing effects for buttons and elements */
+.glow-blue {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+.glow-purple {
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+}
+
+.glow-orange {
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
+}
+
+/* Animated background for game cards */
+.animated-bg {
+  background-size: 200% 200%;
+  animation: gradientBG 5s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating elements animation */
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Pulse effect for buttons */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 20px;
+}
+
+/* Ball trail effect */
+.ball-trail {
+  position: relative;
+}
+
+.ball-trail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 5px rgba(96, 165, 250, 0.7);
+  opacity: 0.7;
+  filter: blur(5px);
+}
+
+
+
+
+
+/* Score flash animation */
+@keyframes scoreFlash {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.score-flash {
+  animation: scoreFlash 0.5s ease-out;
+}
+
+
+

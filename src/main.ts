@@ -8,7 +8,10 @@ const router = new Router(routes, appContainer);
 document.querySelectorAll('a[data-navigate]').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
+    console.log("Enter here !")
     const path = link.getAttribute('data-navigate')!;
+    console.log("Path: ", path)
+    alert(`Navigating to ${path}`);
     router.navigate(path);
   });
 });
