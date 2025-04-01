@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+*{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 :root
 {
-    --color-primary: #101323;
-    --color-secondary: #f29620;
-    --color-accent: #f2f2f2;
+    --color-primary: #181C38;
+    --color-secondary: #4394ff;
+    --color-accent: #AB43CB;
+    --color-success: #1AA52A;
     --color-light: #f2f2f2;
     --color-dark: #000000;
     --color-white: #ffffff;
@@ -15,10 +21,11 @@
     --color-gray-medium: #b3b3b3;
     --color-gray-dark: #808080;
     --color-gray-darker: #666666;
+    user-select: none
 }
-
-h1 {
-  @apply text-4xl font-bold text-center ;
+body
+{
+  font-family: "Play", sans-serif;
 }
 h2 {
   @apply text-3xl font-semibold ;
@@ -40,144 +47,27 @@ p {
 }
 
 .login-page {
-  background-color: #181c38d1;
+
+  background-color: var(--color-primary);
   position: relative;
   background-image: url("../../public/assets/images/bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-blend-mode: color-burn;
-}
-
-.login-form {
-  background-color: var(--color-primary);
-  color: rgb(238, 238, 238);
-  border: solid 1px var(--color-secondary);
-}
-
-
-/* Custom CSS for additional styling not covered by Tailwind */
-
-/* Glowing effects for buttons and elements */
-.glow-blue {
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-}
-
-.glow-purple {
-  box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
-}
-
-.glow-orange {
-  box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
-}
-
-/* Animated background for game cards */
-.animated-bg {
-  background-size: 200% 200%;
-  animation: gradientBG 5s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Floating elements animation */
-.floating {
-  animation: float 3s ease-in-out infinite;
+  background-blend-mode: multiply;
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-/* Pulse effect for buttons */
-.pulse {
-  animation: pulse 2s infinite;
-}
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
+@media screen and (max-width: 1560px) {
+  .player-img,
+  .light-effect {
+    display: none !important; 
   }
 }
-
-/* Custom scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #1f2937;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
-  border-radius: 20px;
-}
-
-/* Ball trail effect */
-.ball-trail {
-  position: relative;
-}
-
-.ball-trail::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  box-shadow: 0 0 10px 5px rgba(96, 165, 250, 0.7);
-  opacity: 0.7;
-  filter: blur(5px);
-}
-
-
-
-
-
-/* Score flash animation */
-@keyframes scoreFlash {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.score-flash {
-  animation: scoreFlash 0.5s ease-out;
-}
-
 
 
