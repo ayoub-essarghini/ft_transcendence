@@ -1,6 +1,36 @@
+import { useAuth } from "../../context/AuthProvider.js";
 import { h, useState } from "../../core/roboto.js";
+import { Router } from "../../utils/router.js";
 
 export const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    try {
+      const success = await login(username, password);
+      
+      if (success) {
+        // Redirect to dashboard on successful login
+        const router = new Router([], document.getElementById('root') as HTMLElement);
+        router.navigate('/');
+      } else {
+        setError("Invalid username or password");
+      }
+    } catch (err) {
+      setError("An error occurred during login");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div class="w-full login-page flex items-center justify-center h-screen bg-[var(--color-primary)] text-[#fff] overflow-hidden">
       <img
@@ -18,17 +48,22 @@ export const Login = () => {
       items-center gap-4 bg-gradient-to-br from-[var(--color-primary)] to-[#202E9F] 
        px-5 py-10 border border-[var(--color-secondary)] rounded-lg shadow-lg shadow-[#4395ff7a] "
       >
-        <h1 class="text-5xl">Welcome back !</h1>
+        <h1 class="text-5xl">Welcome back!</h1>
         <p class="text-gray-200">Welcome To Ping Pong game</p>
-        <form class="w-full flex flex-col justify-center items-center gap-3 m-auto z-10">
-          <div class="w-9/12 flex flex-col  gap-1">
+        
+        {error && <div class="text-red-500 bg-red-100 border border-red-400 rounded px-4 py-2 w-9/12">{error}</div>}
+        
+        <form onSubmit={handleSubmit} class="w-full flex flex-col justify-center items-center gap-3 m-auto z-10">
+          <div class="w-9/12 flex flex-col gap-1">
             <label for="username">Username</label>
             <input
               autocomplete="off"
               class="w-full bg-transparent appearance-none outline-none border text-gray-200 border-gray-200 px-3 py-2.5 rounded-md focus:border-[var(--color-secondary)]"
               type="text"
               id="username"
-              placeholder="username"
+              value={username}
+              onChange={(e:any) => setUsername(e.target.value)}
+              placeholder="Username (use 'admin')"
             />
           </div>
           <div class="w-9/12 flex flex-col gap-1">
@@ -37,7 +72,9 @@ export const Login = () => {
               class="w-full bg-transparent appearance-none outline-none border text-gray-200 border-gray-200 px-2 py-2.5 rounded-md focus:border-[var(--color-secondary)]"
               type="password"
               id="password"
-              placeholder="password"
+              value={password}
+              onChange={(e:any) => setPassword(e.target.value)}
+              placeholder="Password (use 'admin123')"
             />
           </div>
 
@@ -47,15 +84,17 @@ export const Login = () => {
 
           <div class="w-full flex justify-center items-center">
             <button
+              disabled={isLoading}
               class="w-8/12 rounded-lg border-none px-5 py-3 bg-[var(--color-secondary)]
               text-xl
-             hover:bg-[#3a8fffee]
+              hover:bg-[#3a8fffee] disabled:opacity-50
               "
             >
-              Login
+              {isLoading ? "Logging in..." : "Login"}
             </button>
           </div>
         </form>
+        
         <div class="flex items-center justify-center my-1 w-full">
           <div class="w-20 border-t border-[#fff]"></div>
           <span class="mx-4 text-[#fff]">OR</span>
@@ -82,7 +121,7 @@ export const Login = () => {
         <span class="text-[#fff]">
           {" "}
           I don't have an account?{" "}
-          <a href="#" class="text-[var(--color-secondary)]">
+          <a href="/register" data-link="/register" class="text-[var(--color-secondary)]">
             sign up
           </a>
         </span>

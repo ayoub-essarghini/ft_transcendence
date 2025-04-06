@@ -1,12 +1,11 @@
+import { AuthProvider } from "../context/AuthProvider.js";
 import { h, useEffect, useState } from "../core/roboto.js";
-import {Login} from "../pages/auth/Login.js";
+import { Dashboard } from "./Dashboard.js";
 
 
 export const App = () => {
 
   return (
-    <div>
-     <Login />
-    </div>
+   <AuthProvider children={<Dashboard/>}/>
   );
 };

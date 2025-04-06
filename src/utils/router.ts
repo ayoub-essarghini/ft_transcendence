@@ -1,4 +1,5 @@
 import { createApp, h, ComponentInstance, VNode } from '../core/roboto.js'; 
+import { routes } from '../routes.js';
 
 export type Route = {
   path: string;
@@ -10,6 +11,7 @@ export class Router {
   private appContainer: HTMLElement;
   private currentInstance: ComponentInstance | null = null;
   private isNavigating: boolean = false;
+  private history: string[] = [];  // Keep track of navigation history
 
   private get currentPath(): string {
     return window.location.pathname;
@@ -18,11 +20,18 @@ export class Router {
   constructor(routes: Route[], appContainer: HTMLElement) {
     this.routes = routes;
     this.appContainer = appContainer;
+    this.history.push(this.currentPath); // Initialize with current path
     this.init();
   }
 
   private init(): void {
-    window.addEventListener("popstate", () => this.route());
+    window.addEventListener("popstate", () => {
+      // Update our history when browser's back/forward buttons are used
+      if (!this.history.includes(this.currentPath)) {
+        this.history.push(this.currentPath);
+      }
+      this.route();
+    });
     setTimeout(() => this.route(), 0); // Ensure DOM is loaded
   }
 
@@ -87,8 +96,43 @@ export class Router {
 
   public navigate(path: string): void {
     if (window.location.pathname !== path) {
+      // Add current path to history before navigating
+      this.history.push(window.location.pathname);
+      // Limit history length to prevent memory issues
+      if (this.history.length > 20) {
+        this.history.shift();
+      }
+      
       window.history.pushState({}, "", path);
       this.route();
     }
   }
+  
+  /**
+   * Navigate back to the previous route in history
+   * If no history exists, navigates to the fallback path (default: '/')
+   */
+  public goBack(fallbackPath: string = '/dashboard'): void {
+    // Remove current page from history
+    if (this.history.length > 0 && this.history[this.history.length - 1] === this.currentPath) {
+      this.history.pop();
+    }
+    
+    // Get the last path from history or use fallback
+    const previousPath = this.history.pop() || fallbackPath;
+    
+    // Navigate to the previous path
+    window.history.pushState({}, "", previousPath);
+    this.route();
+  }
+}
+
+let routerInstance: Router | null = null;
+
+export function getRouter(): Router {
+  if (!routerInstance) {
+    const container = document.getElementById('root') as HTMLElement;
+    routerInstance = new Router(routes, container);
+  }
+  return routerInstance;
 }
