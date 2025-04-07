@@ -1,13 +1,16 @@
-import { useAuth } from "../../context/AuthProvider.js";
+
 import { h, useState } from "../../core/roboto.js";
-import { Router } from "../../utils/router.js";
+import { auth } from "../../services/auth.js";
+import { getRouter } from "../../utils/router-instance.js";
+
+
+
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -15,17 +18,17 @@ export const Login = () => {
     setIsLoading(true);
 
     try {
-      const success = await login(username, password);
+      const success = await auth.login(username, password);
       
       if (success) {
-        // Redirect to dashboard on successful login
-        const router = new Router([], document.getElementById('root') as HTMLElement);
+        const router = getRouter();
         router.navigate('/');
       } else {
         setError("Invalid username or password");
       }
     } catch (err) {
       setError("An error occurred during login");
+      console.error("Login error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -55,23 +58,23 @@ export const Login = () => {
         
         <form onSubmit={handleSubmit} class="w-full flex flex-col justify-center items-center gap-3 m-auto z-10">
           <div class="w-9/12 flex flex-col gap-1">
-            <label for="username">Username</label>
+            <label >Username</label>
             <input
               autocomplete="off"
               class="w-full bg-transparent appearance-none outline-none border text-gray-200 border-gray-200 px-3 py-2.5 rounded-md focus:border-[var(--color-secondary)]"
               type="text"
-              id="username"
+       
               value={username}
               onChange={(e:any) => setUsername(e.target.value)}
               placeholder="Username (use 'admin')"
             />
           </div>
           <div class="w-9/12 flex flex-col gap-1">
-            <label for="password">Password</label>
+            <label >Password</label>
             <input
               class="w-full bg-transparent appearance-none outline-none border text-gray-200 border-gray-200 px-2 py-2.5 rounded-md focus:border-[var(--color-secondary)]"
               type="password"
-              id="password"
+           
               value={password}
               onChange={(e:any) => setPassword(e.target.value)}
               placeholder="Password (use 'admin123')"

@@ -1,23 +1,68 @@
 import { Route } from "./utils/router.js";
-import { App } from "./components/App.js";
+import { Dashboard } from "./components/Dashboard.js";
 import { Login } from "./pages/auth/Login.js";
 import { NotFound } from "./pages/NotFound.js";
 import { Signup } from "./pages/auth/Signup.js";
 import { LeaderBoard } from "./components/LeaderBoard.js";
-import { Dashboard } from "./components/Dashboard.js";
-import { ProtectedRoute } from "./pages/auth/ProtectedRoute.js";
+import { UserProfile } from "./components/UserProfile.js";
+import { PublicRoute } from "./pages/middlewares/PublicRoute.js";
+
 
 export const routes: Route[] = [
-  { path: "/", component: () => ProtectedRoute({ children: App() }) },
-  { path: "/register", component: () => Signup() },
+  {
+    path: "/",
+    component: ({ params, query }) => Dashboard(),
+    meta: {
+      requiresAuth: true,
+      title: "Dashboard - Ping Pong"
+    }
+  },
+  {
+    path: "/login",
+    component: ({ params, query }) => PublicRoute({children: Login()}),
+    meta: {
+      guestOnly: true,
+      title: "Login - Ping Pong"
+    }
+  },
+  {
+    path: "/register",
+    component: ({ params, query }) => PublicRoute({children: Signup()}) ,
+    meta: {
+      guestOnly: true,
+      title: "Sign Up - Ping Pong"
+    }
+  },
   {
     path: "/board",
-    component: () => ProtectedRoute({ children: LeaderBoard() }),
+    component: ({ params, query }) => LeaderBoard(),
+    meta: {
+      requiresAuth: true,
+      title: "Leaderboard - Ping Pong"
+    }
   },
-  { path: "/login", component: () => Login() },
   {
     path: "/dashboard",
-    component: () => ProtectedRoute({ children: Dashboard() }),
+    component: ({ params, query }) => Dashboard(),
+    meta: {
+      requiresAuth: true,
+      title: "Dashboard - Ping Pong"
+    }
   },
-  { path: "/*", component: () => NotFound() },
+  {
+    // Route with parameter example
+    path: "/user/:username",
+    component: ({ params }) => UserProfile({ username: params.username }),
+    meta: {
+      requiresAuth: true,
+      title: "User Profile - Ping Pong"
+    }
+  },
+  {
+    path: "/*",
+    component: () => NotFound(),
+    meta: {
+      title: "Page Not Found - Ping Pong"
+    }
+  }
 ];
