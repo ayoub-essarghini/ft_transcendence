@@ -26,6 +26,7 @@ export type Route = {
 };
 
 export class Router {
+  
   private routes: Route[];
   private appContainer: HTMLElement;
   private currentInstance: ComponentInstance | null = null;
@@ -175,19 +176,19 @@ export class Router {
 
     if (route) {
       
-      // if (route.meta?.requiresAuth && !auth.isAuthenticated()) {
-      //   console.log("Protected route - redirecting to login");
-      //   this.isNavigating = false; // Reset before redirecting
-      //   this.navigateTo('/login', true);
-      //   return;
-      // }
+      if (route.meta?.requiresAuth && !auth.isAuthenticated()) {
+        console.log("Protected route - redirecting to login");
+        this.isNavigating = false; // Reset before redirecting
+        this.navigateTo('/login', true);
+        return;
+      }
       
-      // if (route.meta?.guestOnly && auth.isAuthenticated()) {
-      //   console.log("Already authenticated - redirecting to dashboard");
-      //   this.isNavigating = false; // Reset before redirecting
-      //   this.navigateTo('/dashboard', true);
-      //   return;
-      // }
+      if (route.meta?.guestOnly && auth.isAuthenticated()) {
+        console.log("Already authenticated - redirecting to dashboard");
+        this.isNavigating = false; // Reset before redirecting
+        this.navigateTo('/dashboard', true);
+        return;
+      }
 
 
       if (route.meta?.title) {

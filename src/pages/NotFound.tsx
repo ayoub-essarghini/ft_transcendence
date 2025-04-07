@@ -36,7 +36,7 @@ export const NotFound = () => {
               <div className="text-9xl font-bold text-gray-200 dark:text-gray-700">404</div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                  Oops!
+                  Oops! 
                 </div>
               </div>
             </div>
