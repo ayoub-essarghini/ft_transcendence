@@ -1,5 +1,5 @@
-import { ComponentInstance, createApp, h, VNode } from "../core/roboto.js";
-import { auth } from "../services/auth.js";
+import { ComponentInstance, createApp, h, VNode } from "../../core/roboto.js";
+import { auth } from "../../services/auth.js";
 
 
 export type RouteParams = Record<string, string>;
@@ -14,14 +14,14 @@ export interface RouteHandler {
 }
 
 export type Route = {
-  path: string;
-  component: RouteHandler;
-  exact?: boolean;
-  meta?: {
-    requiresAuth?: boolean;
-    guestOnly?: boolean;
-    title?: string;
-    [key: string]: any;
+  path: string; // The URL path for the route (e.g., "/login", "/dashboard").
+  component: RouteHandler; // The function that renders the component for the route.
+  exact?: boolean; // Optional: If true, the route must match the path exactly.
+  meta?: { // Optional: Metadata for the route.
+    requiresAuth?: boolean; // If true, the route requires authentication.
+    guestOnly?: boolean; // If true, the route is only accessible to unauthenticated users.
+    title?: string; // The title to set for the document when the route is active.
+    [key: string]: any; // Allows additional metadata properties.
   };
 };
 

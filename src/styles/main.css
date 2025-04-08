@@ -3,6 +3,62 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Pulsing animations for each color */
+@keyframes pulse-cyan {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8));
+  }
+}
+
+@keyframes pulse-fuchsia {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 255, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.8));
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+  }
+}
+
+.pulse-cyan {
+  animation: pulse-cyan 2s infinite ease-in-out;
+}
+
+.pulse-fuchsia {
+  animation: pulse-fuchsia 2s infinite ease-in-out;
+}
+
+.pulse-red {
+  animation: pulse-red 2s infinite ease-in-out;
+}
+
 *{
   box-sizing: border-box;
   scroll-behavior: smooth;

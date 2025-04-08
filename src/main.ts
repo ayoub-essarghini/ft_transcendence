@@ -1,5 +1,5 @@
 import { routes } from "./routes.js";
-import { initRouter } from "./utils/router-instance.js";
+import { initRouter } from "./core/router/router-instance.js";
 
 
 const appContainer = document.getElementById('root') as HTMLElement;

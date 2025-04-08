@@ -1,7 +1,7 @@
 
 import { h, useState } from "../../core/roboto.js";
 import { auth } from "../../services/auth.js";
-import { getRouter } from "../../utils/router-instance.js";
+import { getRouter } from "../../core/router/router-instance.js";
 
 
 

@@ -1,6 +1,6 @@
-import { h, useEffect, useState } from '../../core/roboto.js';
-import { auth } from '../../services/auth.js';
-import { getRouter } from '../../utils/router-instance.js';
+import { h, useEffect, useState } from "../core/roboto.js";
+import { getRouter } from "../core/router/router-instance.js";
+import { auth } from "../services/auth.js";
 
 export const PublicRoute = ({ children }: { children: any }) => {
   const [isReady, setIsReady] = useState(false);

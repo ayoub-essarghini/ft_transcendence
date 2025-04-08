@@ -1,15 +1,16 @@
-import { h, useEffect, useState } from '../../core/roboto.js';
-import { auth } from '../../services/auth.js';
-import { getRouter } from '../../utils/router-instance.js';
+import { h, useEffect, useState } from "../core/roboto.js";
+import { getRouter } from "../core/router/router-instance.js";
+import { auth } from "../services/auth.js";
+
 
 
 
 export const ProtectedRoute = ({ children }: { children: any }) => {
   const [isReady, setIsReady] = useState(false);
-  
+
   useEffect(() => {
     try {
-      // ProtectedRoute should redirect unauthenticated users to login
+
       if (!auth.isAuthenticated()) {
         console.log("User is not authenticated, redirecting to login");
         const router = getRouter();
@@ -19,7 +20,7 @@ export const ProtectedRoute = ({ children }: { children: any }) => {
       }
     } catch (e) {
       console.error("Router error in ProtectedRoute:", e);
-      // If router fails, still show content with proper warning
+
       setIsReady(true);
     }
   }, []);

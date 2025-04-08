@@ -1,17 +1,19 @@
-import { Route } from "./utils/router.js";
-import { Dashboard } from "./components/Dashboard.js";
+import { Route } from "./core/router/router.js";
+import { Dashboard } from "./pages/Dashboard.js";
 import { Login } from "./pages/auth/Login.js";
 import { NotFound } from "./pages/NotFound.js";
 import { Signup } from "./pages/auth/Signup.js";
-import { LeaderBoard } from "./components/LeaderBoard.js";
-import { UserProfile } from "./components/UserProfile.js";
-import { PublicRoute } from "./pages/middlewares/PublicRoute.js";
+import { LeaderBoard } from "./pages/LeaderBoard.js";
+import { UserProfile } from "./pages/UserProfile.js";
+import { PublicRoute } from "./middlewares/PublicRoute.js";
+import { Chat } from "./pages/Chat.js";
+import { Game } from "./pages/Game.js";
 
 
 export const routes: Route[] = [
   {
     path: "/",
-    component: ({ params, query }) => Dashboard(),
+    component: () => Dashboard(),
     meta: {
       requiresAuth: true,
       title: "Dashboard - Ping Pong"
@@ -42,11 +44,28 @@ export const routes: Route[] = [
     }
   },
   {
-    path: "/dashboard",
-    component: ({ params, query }) => Dashboard(),
+    path: "/chat",
+    component: ({ params, query }) => Chat(),
     meta: {
       requiresAuth: true,
-      title: "Dashboard - Ping Pong"
+      title: "Chat - Ping Pong"
+    }
+  },
+
+  {
+    path: "/game",
+    component: ({ params, query }) => Game(),
+    meta: {
+      requiresAuth: true,
+      title: "Game - Ping Pong"
+    }
+  },
+  {
+    path: "/settings",
+    component: ({ params, query }) => Game(),
+    meta: {
+      requiresAuth: true,
+      title: "Settings - Ping Pong"
     }
   },
   {

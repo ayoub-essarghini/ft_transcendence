@@ -1,6 +1,6 @@
-import {h} from "../core/roboto.js";
-import { RouteParams } from "../utils/router.js";
-import { getRouter } from "../utils/router-instance.js";
+import {h} from "../../core/roboto.js";
+import { RouteParams } from "./router.js";
+import { getRouter } from "./router-instance.js";
 
 
 interface LinkProps {

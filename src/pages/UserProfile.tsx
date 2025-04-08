@@ -1,5 +1,5 @@
 import { h, useState, useEffect } from "../core/roboto.js";
-import { Layout } from "../layout/layout.js";
+import { Layout } from "../pages/layout/layout.js";
 
 interface UserProfileProps {
     username: string;
@@ -10,10 +10,9 @@ export const UserProfile = ({ username }: UserProfileProps) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Simulate fetching user data
+     
         setLoading(true);
 
-        // This would be an API call in a real app
       
             setUserData({
                 username,
