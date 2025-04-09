@@ -1,5 +1,5 @@
 
-import { h, useState } from "../../core/roboto.js";
+import { h, useEffect, useState } from "../../core/roboto.js";
 import { auth } from "../../services/auth.js";
 import { getRouter } from "../../core/router/router-instance.js";
 
@@ -12,8 +12,18 @@ export const Login = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+  
     setError("");
     setIsLoading(true);
 
@@ -65,7 +75,7 @@ export const Login = () => {
               type="text"
        
               value={username}
-              onChange={(e:any) => setUsername(e.target.value)}
+              onInput={(e:any) => setUsername(e.target.value)}
               placeholder="Username (use 'admin')"
             />
           </div>
@@ -76,7 +86,7 @@ export const Login = () => {
               type="password"
            
               value={password}
-              onChange={(e:any) => setPassword(e.target.value)}
+              onInput={(e:any) => setPassword(e.target.value)}
               placeholder="Password (use 'admin123')"
             />
           </div>

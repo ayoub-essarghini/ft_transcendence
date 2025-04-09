@@ -1,6 +1,5 @@
 import { h } from "../core/roboto.js";
 import { Layout } from "../pages/layout/layout.js";
-import { Link } from "../core/router/Link.js";
 import AchievementsDashboard from "../components/Achievement.js";
 import { AchievementHistory } from "../components/achievement-history.js";
 import { TournamentAchievement } from "../components/tournament-achievement.js";
@@ -10,129 +9,130 @@ export const Dashboard = () => {
 
   const matches = [
     {
-      time: "5:00 PM",
+      time: "2:30 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex ",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Mira",
+        avatar: "https://randomuser.me/api/portraits/women/45.jpg",
       },
-      score: "3 - 2",
+      score: "1 - 3",
     },
     {
-      time: "5:00 PM",
+      time: "3:15 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Noah",
+        avatar: "https://randomuser.me/api/portraits/men/29.jpg",
       },
-      score: "3 - 2",
+      score: "2 - 2",
     },
     {
-      time: "5:00 PM",
+      time: "4:00 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Olivia",
+        avatar: "https://randomuser.me/api/portraits/women/33.jpg",
       },
-      score: "3 - 2",
+      score: "0 - 1",
     },
     {
-      time: "5:00 PM",
+      time: "4:45 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Ava",
+        avatar: "https://randomuser.me/api/portraits/women/53.jpg",
       },
-      score: "3 - 2",
+      score: "3 - 4",
     },
     {
-      time: "5:00 PM",
+      time: "5:30 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Lucas",
+        avatar: "https://randomuser.me/api/portraits/men/27.jpg",
       },
-      score: "3 - 2",
+      score: "5 - 5",
     },
     {
-      time: "5:00 PM",
+      time: "6:00 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "James",
+        avatar: "https://randomuser.me/api/portraits/men/50.jpg",
       },
-      score: "3 - 2",
+      score: "2 - 0",
     },
-  ]
+  ];
+  
   const matches2 = [
-
     {
-      time: "5:00 PM",
+      time: "6:15 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Leo",
+        avatar: "https://randomuser.me/api/portraits/men/21.jpg",
       },
-      score: "3 - 2",
+      score: "1 - 1",
     },
     {
-      time: "5:00 PM",
+      time: "6:45 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Mason",
+        avatar: "https://randomuser.me/api/portraits/men/63.jpg",
       },
-      score: "3 - 2",
+      score: "3 - 1",
     },
     {
-      time: "5:00 PM",
+      time: "7:30 PM",
       player1: {
-        name: "Jolia",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Alex",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       },
       player2: {
-        name: "Him",
-        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
+        name: "Logan",
+        avatar: "https://randomuser.me/api/portraits/men/42.jpg",
       },
-      score: "3 - 2",
+      score: "0 - 2",
     },
-   
-  ]
+  ];
+  
+  
   return (
     <Layout
       children={
         <div className="w-full flex flex-col text-fuchsia-50 ">
-          <h1 className="px-2 py-4 text-2xl font-semibold xl:px-24 md:px-10 mb-6">Home Page</h1>
-          <main className="xl:px-24 flex flex-row justify-between w-full h-[90vh] md:flex-col lg:flex-row sm:flex-col md:px-10 overflow-y-auto ">
-            <div className='lg:w-1/2  flex flex-col p-2 gap-8 lg:justify-normal md:justify-normal md:w-full sm:w-full sm:justify-center sm:items-center '>
+          <h1 className="px-2 py-3 text-2xl font-semibold xl:px-24 md:px-10 ">Home Page</h1>
+          <main className="xl:px-14 flex flex-row justify-between w-full h-[90vh] md:flex-col lg:flex-row sm:flex-col md:px-10 overflow-y-auto ">
+            <div className='lg:w-1/2  flex flex-col p-2 gap-6 lg:justify-normal md:justify-normal md:w-full sm:w-full sm:justify-center sm:items-center '>
               <div className="achievements w-full">
                <AchievementsDashboard winRate={20} level={17} loseRate={5.7} />
               </div>
-              <div className="a-history mt-6 w-full">
+              <div className="a-history mt-2 w-full h-full overflow-y-auto">
               <AchievementHistory title="Achievement History" matches={matches}/>
               </div>
             </div>
@@ -142,7 +142,7 @@ export const Dashboard = () => {
                 <TournamentAchievement />
               </div>
               <div className="w-full bot-profile flex flex-row gap-3 md:flex-col sm:flex-col lg:flex-row">
-                <div className="bot w-full mt-2">
+                <div className="bot w-full mt-2 overflow-y-auto">
                 <AchievementHistory title="Achievement Bot" matches={matches2}/>
                 </div>
                 <div className="profile w-full mt-2">
