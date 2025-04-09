@@ -2,7 +2,7 @@ import {h} from "../core/roboto.js"
 
 export const AchievementHistory = ({ title, matches }: { title: string; matches: MatchProps['match'][] }) => {
     return (
-        <div className="w-full max-w-lg p-6 rounded-3xl bg-[#0a0b34] text-white">
+        <div className="w-full max-h-full overflow-auto max-w-lg p-6 rounded-3xl bg-[var(--color-card-background)] text-white">
             <h2 className="text-lg font-normal mb-6">{title}</h2>
 
             <div className="space-y-4">
@@ -31,7 +31,7 @@ export const AchievementHistory = ({ title, matches }: { title: string; matches:
   
   function MatchHistoryCard({ match }: MatchProps) {
     return (
-      <div className="flex items-center justify-between p-4 rounded-2xl bg-[#1a1b4b] bg-opacity-50 border border-[#2a2b6b]">
+      <div className="flex items-center justify-between p-4 rounded-2xl bg-[var(--color-card-history)] bg-opacity-50 border border-[var(--color-card-history-border)]">
         <div className="flex items-center space-x-3">
           <span className="text-sm font-medium text-gray-300 w-16">{match.time}</span>
           <div className="flex items-center space-x-2">

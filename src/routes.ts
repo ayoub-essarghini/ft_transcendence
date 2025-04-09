@@ -3,7 +3,7 @@ import { Dashboard } from "./pages/Dashboard.js";
 import { Login } from "./pages/auth/Login.js";
 import { NotFound } from "./pages/NotFound.js";
 import { Signup } from "./pages/auth/Signup.js";
-import { LeaderBoard } from "./pages/LeaderBoard.js";
+import { Leaderboard } from "./pages/LeaderBoard.js";
 import { UserProfile } from "./pages/UserProfile.js";
 import { PublicRoute } from "./middlewares/PublicRoute.js";
 import { Chat } from "./pages/Chat.js";
@@ -37,7 +37,7 @@ export const routes: Route[] = [
   },
   {
     path: "/board",
-    component: ({ params, query }) => LeaderBoard(),
+    component: ({ params, query }) => Leaderboard(),
     meta: {
       requiresAuth: true,
       title: "Leaderboard - Ping Pong"

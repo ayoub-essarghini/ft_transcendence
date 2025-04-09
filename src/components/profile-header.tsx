@@ -2,11 +2,11 @@ import { h } from "../core/roboto.js"
 
 export const ProfileHeader = () => {
     return (
-        <div className="w-10/12 rounded-3xl bg-[#0a0b34] text-white overflow-hidden">
+        <div className="w-10/12 rounded-3xl bg-[var(--color-card-background)] text-white overflow-hidden">
 
             <div className="relative pt-4 px-4 pb-6">
 
-                <button className="absolute top-6 right-6 p-2 rounded-full bg-[#1a1b4b] bg-opacity-50 hover:bg-opacity-70 transition-colors">
+                <button className="absolute top-6 right-6 p-2 rounded-full bg-[var(--color-card-history)] bg-opacity-50 hover:bg-opacity-70 transition-colors">
 
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -27,14 +27,14 @@ export const ProfileHeader = () => {
 
 
                 <div className="w-16 h-16 rounded-full border-2 border-white overflow-hidden">
-                    <img src="/placeholder.svg?height=64&width=64" alt="Profile" className="w-full h-full object-cover" />
+                    <img src="public/assets/images/Avatar.svg?height=64&width=64" alt="Profile" className="w-full h-full object-cover" />
                 </div>
             </div>
 
 
-            <div className="mx-4 mb-4 p-2 rounded-xl bg-[#151863] border border-[#2a2b6b]">
+            <div className="mx-4 mb-4 p-2 rounded-xl bg-[var(--color-card-history)] border border-[var(--color-card-history-border)]">
 
-                <div className="mb-6 pb-4 border-b border-[#2a2b6b]">
+                <div className="mb-6 pb-4 border-b border-[var(--color-card-history-border)]">
                     <h2 className="text-lg font-semibold mb-1">Ahmed Amine</h2>
                     <p className="text-gray-300">#AhmedHero</p>
                 </div>

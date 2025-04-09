@@ -3,6 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
+:root
+{
+    --color-primary: #181C38;
+    --color-secondary: #4394ff;
+    --color-accent: #AB43CB;
+    --color-success: #1AA52A;
+    --color-light: #f2f2f2;
+    --color-dark: #000000;
+    --color-white: #ffffff;
+    --color-gray-light: #e0e0e0;
+    --color-gray-medium-light: #d9d9d9;
+    --color-gray-medium: #b3b3b3;
+    --color-gray-dark: #808080;
+    --color-gray-darker: #666666;
+    
+    --color-card-background: #151636dd;
+    --color-card-history: #1a1b4b;
+    --color-card-border: #2a2b6b;
+    user-select: none
+}
+body
+{
+  font-family: "Play", sans-serif;
+}
+h2 {
+  @apply text-3xl font-semibold ;
+}
+h3 {
+  @apply text-2xl font-semibold  ;
+}
+h4 {
+  @apply text-xl font-semibold  ;
+}
+h5 {
+  @apply text-lg font-semibold  ;
+}
+h6 {
+  @apply text-base font-semibold ;
+}
+p {
+  @apply text-base  ;
+}
 
 @layer utilities {
   .text-balance {
@@ -63,44 +105,7 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-:root
-{
-    --color-primary: #181C38;
-    --color-secondary: #4394ff;
-    --color-accent: #AB43CB;
-    --color-success: #1AA52A;
-    --color-light: #f2f2f2;
-    --color-dark: #000000;
-    --color-white: #ffffff;
-    --color-gray-light: #e0e0e0;
-    --color-gray-medium-light: #d9d9d9;
-    --color-gray-medium: #b3b3b3;
-    --color-gray-dark: #808080;
-    --color-gray-darker: #666666;
-    user-select: none
-}
-body
-{
-  font-family: "Play", sans-serif;
-}
-h2 {
-  @apply text-3xl font-semibold ;
-}
-h3 {
-  @apply text-2xl font-semibold  ;
-}
-h4 {
-  @apply text-xl font-semibold  ;
-}
-h5 {
-  @apply text-lg font-semibold  ;
-}
-h6 {
-  @apply text-base font-semibold ;
-}
-p {
-  @apply text-base  ;
-}
+
 
 .login-page {
 

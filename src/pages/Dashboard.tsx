@@ -13,11 +13,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -25,11 +25,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -37,11 +37,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -49,11 +49,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -61,11 +61,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -73,11 +73,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -88,11 +88,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -100,11 +100,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -112,11 +112,11 @@ export const Dashboard = () => {
       time: "5:00 PM",
       player1: {
         name: "Jolia",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       player2: {
         name: "Him",
-        avatar: "/placeholder.svg?height=40&width=40",
+        avatar: "public/assets/images/Avatar.svg?height=40&width=40",
       },
       score: "3 - 2",
     },
@@ -125,14 +125,14 @@ export const Dashboard = () => {
   return (
     <Layout
       children={
-        <div className="w-full flex flex-col text-fuchsia-50">
-          <h1 className=" p-2 text-2xl font-semibold ml-8 mb-6">Home Page</h1>
-          <main className="flex flex-row w-full h-full">
-            <div className='w-1/2 left flex flex-col p-2 gap-2'>
-              <div className="achievements">
+        <div className="w-full flex flex-col text-fuchsia-50 ">
+          <h1 className="px-2 py-4 text-2xl font-semibold xl:px-24 md:px-10 mb-6">Home Page</h1>
+          <main className="xl:px-24 flex flex-row justify-between w-full h-[90vh] md:flex-col lg:flex-row sm:flex-col md:px-10 overflow-y-auto ">
+            <div className='lg:w-1/2  flex flex-col p-2 gap-8 lg:justify-normal md:justify-normal md:w-full sm:w-full sm:justify-center sm:items-center '>
+              <div className="achievements w-full">
                <AchievementsDashboard winRate={20} level={17} loseRate={5.7} />
               </div>
-              <div className="a-history">
+              <div className="a-history mt-6 w-full">
               <AchievementHistory title="Achievement History" matches={matches}/>
               </div>
             </div>
@@ -141,11 +141,11 @@ export const Dashboard = () => {
               <div className="a-tournaments w-full">
                 <TournamentAchievement />
               </div>
-              <div className="w-full bot-profile flex flex-row gap-4">
-                <div className="bot w-full">
+              <div className="w-full bot-profile flex flex-row gap-3 md:flex-col sm:flex-col lg:flex-row">
+                <div className="bot w-full mt-2">
                 <AchievementHistory title="Achievement Bot" matches={matches2}/>
                 </div>
-                <div className="profile w-full">
+                <div className="profile w-full mt-2">
                  <ProfileHeader />
                 </div>
               </div>
