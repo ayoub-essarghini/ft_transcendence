@@ -8,15 +8,16 @@ export default function AchievementsDashboard({winRate, level, loseRate}: {winRa
   }, [])
   
   return (
-    <div className="w-full max-w-lg p-6 rounded-md bg-[var(--color-card-background)] text-white">
+    <div className="w-full max-w-lg p-6 rounded-md bg-[var(--color-card-background)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[#00ffff83]">
       <h2 className="text-lg font-normal mb-4">Achievements</h2>
       <div className="flex justify-between items-center gap-3">
         <ProgressCircle percentage={winRate ?? 0} color="cyan" label="Win" animate={animate} />
-        <ProgressCircle percentage={level ?? 0} color="fuchsia" label="Level" animate={animate}  />
-        <ProgressCircle percentage={loseRate ?? 0} color="red" label="Lose" animate={animate}  />
+        <ProgressCircle percentage={level ?? 0} color="fuchsia" label="Level" animate={animate} />
+        <ProgressCircle percentage={loseRate ?? 0} color="red" label="Lose" animate={animate} />
       </div>
     </div>
   )
+  
 }
 
 interface ProgressCircleProps {
@@ -84,8 +85,8 @@ function ProgressCircle({ percentage, color, label, animate, delay = 0 }: Progre
   const rotation = animate ? displayPercentage * 3.6 : 0 // 3.6 = 360 / 100
 
   return (
-    <div className="relative flex flex-col items-center">
-      <div className="relative w-[100px] h-[100px] flex items-center justify-center">
+    <div className="relative flex flex-col justify-center items-center">
+      <div className="relative w-[115px] h-[115px] flex items-center justify-center">
         {/* Background glow */}
         <div
           className={`absolute w-full h-full rounded-full ${colorMap[color].pulseClass}`}
@@ -97,7 +98,7 @@ function ProgressCircle({ percentage, color, label, animate, delay = 0 }: Progre
         />
 
         {/* Progress circle container */}
-        <div className="w-[80px] h-[80px] rounded-full flex items-center justify-center relative">
+        <div className="w-[95px] h-[95px] rounded-full flex items-center justify-center relative">
           {/* Background circle */}
           <div
             className="absolute inset-0 rounded-full"
@@ -125,7 +126,7 @@ function ProgressCircle({ percentage, color, label, animate, delay = 0 }: Progre
           {/* Content */}
           <div className="z-20 flex flex-col items-center">
             <span 
-              className={`text-lg font-bold ${colorMap[color].text}`}
+              className={`text-xl font-bold ${colorMap[color].text}`}
               style={{
                 opacity: animate ? 1 : 0,
                 transform: animate ? "translateY(0)" : "translateY(10px)",

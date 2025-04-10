@@ -2,7 +2,7 @@ import { h } from "../core/roboto.js"
 
 export const AchievementHistory = ({ title, matches }: { title: string; matches: MatchProps['match'][] }) => {
   return (
-    <div className="w-full h-auto overflow-y-auto max-w-lg p-6 rounded-md bg-[var(--color-card-background)] text-white">
+    <div className="w-full h-auto overflow-y-auto max-w-lg p-6 rounded-md bg-[var(--color-card-background)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[var(--color-accent)]">
       <h2 className="text-lg font-normal mb-6">{title}</h2>
 
       <div className="space-y-4">
@@ -31,7 +31,7 @@ interface MatchProps {
 
 function MatchHistoryCard({ match }: MatchProps) {
   return (
-    <div className="flex items-center justify-between p-3 rounded-md bg-[var(--color-card-history)] bg-opacity-50 border border-[var(--color-card-history-border)]">
+    <div className="flex items-center justify-between p-3 rounded-md bg-[var(--color-card-history)] bg-opacity-50 border border-[var(--color-card-border)]">
       <div className="flex items-center space-x-3">
         <span className="text-[0.8rem] font-medium text-gray-300 w-16">{match.time}</span>
         <div className="flex items-center space-x-2 relative">
@@ -41,7 +41,7 @@ function MatchHistoryCard({ match }: MatchProps) {
             className="w-8 h-8 rounded-full object-cover border-2 border-gray-700"
           />
           <span
-            className="text-sm font-medium w-[8rem] truncate overflow-hidden whitespace-nowrap block tooltip"
+            className="text-sm font-medium w-[4rem] truncate overflow-hidden whitespace-nowrap block tooltip"
             data-tooltip={match.player1.name}
           >
             {match.player1.name}
@@ -49,10 +49,10 @@ function MatchHistoryCard({ match }: MatchProps) {
         </div>
       </div>
 
-      <div className="font-bold text-lg px-3 w-[10rem]">{match.score}</div>
+      <div className="font-bold text-lg px-3 w-[5rem]">{match.score}</div>
 
       <div className="flex items-center space-x-2 relative">
-        <span className="text-sm font-medium w-[80px] truncate overflow-hidden whitespace-nowrap block tooltip" data-tooltip={match.player2.name}>{match.player2.name}</span>
+        <span className="text-sm font-medium w-[4rem] truncate overflow-hidden whitespace-nowrap block tooltip" data-tooltip={match.player2.name}>{match.player2.name}</span>
         <div className="w-auto">
           <img
             src={match.player2.avatar || "/placeholder.svg"}

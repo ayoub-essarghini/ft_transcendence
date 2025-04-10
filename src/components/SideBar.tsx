@@ -1,5 +1,7 @@
 import { h, useState, useEffect } from '../core/roboto.js';
 import { Link } from '../core/router/Link.js';
+import { getRouter } from '../core/router/router-instance.js';
+import { auth } from '../services/auth.js';
 
 export const SideBar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -22,11 +24,16 @@ export const SideBar = () => {
     { path: "/settings", label: "Settings", icon: "public/assets/images/sideBar/setting.svg" },
     { path: "/logout", label: "Logout", icon: "public/assets/images/sideBar/logout.svg" },
   ];
+  const handleLogout = (e: any) => {
+    e.preventDefault();
+    auth.logout();
+    getRouter().navigate('/login');
 
+  };
 
 
   return (
-    <div class="flex flex-col items-center h-screen bg-gradient-to-t from-[#006eff5a] to-[#20265e05] text-white p-3 gap-5 border-r border-[#ffffff59] ">
+    <div class="flex flex-col items-center h-screen text-white p-3 gap-5 border-r border-[#ffffff59] shadow-md shadow-[var(--color-accent)] ">
       <div class="flex items-center justify-center">
 
       </div>
@@ -36,27 +43,26 @@ export const SideBar = () => {
         return (
           <div className="flex justify-center items-center flex-row gap-2" >
             {link.path === activePath && (
-              <div className="w-1 h-10 mx-1 bg-[#fff] rounded-lg absolute transition-all duration-300 ease-in-out" style={{ left: '0' }} />
+              <div className="w-1 h-10 mx-1 bg-[#fff] rounded-lg absolute transition-all duration-300 ease-in-out " style={{ left: '0' }} />
             )}
 
             <Link
-              to={link.path}
+              to={link.path == '/logout' ? '#' : link.path}
               key={link.label}
-              className={`flex p-4 rounded-xl border border-[#fff] transition-all duration-300
+              onClick={link.path === '/logout' ? (e: any) => handleLogout(e) : undefined}
+              className={`flex p-4 rounded-xl transition-all duration-300
               ${link.path === '/logout' ? 'absolute bottom-10' : 'relative'}
             ${activePath === link.path
-                  ? 'bg-gradient-to-tl from-[#001AFF] to-[#00FFF0]'
-                  : 'bg-[var(--color-primary)] hover:bg-gradient-to-tl hover:from-[#001AFF] hover:to-[#00FFF0]'
+                  ? 'bg-gradient-to-tl from-[#001AFF] to-[var(--color-accent)] shadow-none shadow-[#0000]'
+                  : 'bg-[var(--color-primary)] hover:bg-gradient-to-tl hover:from-[#001AFF] hover:to-[var(--color-accent)] shadow-sm shadow-[#0fff]  '}
                 }`}
               children={<div className="flex justify-start items-center gap-4 relative group">
-                <img src={link.icon} alt={link.label} className="h-6 w-6" />
+                <img src={link.icon} alt={link.label} className="h-5 w-5 text-white" />
                 <span className="translate-x-14 text-sm hidden absolute text-black transition-all duration-500 ease-in-out bg-white px-2 py-1 rounded-lg group-hover:flex justify-start z-10">{link.label}</span>
               </div>}
             />
           </div>
-
         )
-
       })}
 
     </div>

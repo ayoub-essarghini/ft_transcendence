@@ -6,6 +6,6 @@ import { Layout } from "./layout/layout.js";
 export const Chat = () => {
 
     return (
-        <Layout children={<div class='text-white'>Chat app</div>} />
+        <Layout  title="Chat" children={<div class='text-white'>Chat app</div>} />
     )
 }

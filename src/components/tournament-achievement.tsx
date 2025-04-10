@@ -5,7 +5,7 @@ export const TournamentAchievement = ()=> {
       {
         league: "League A",
         time: "1:00 PM",
-        participants: 4,
+        participants: 5,
         points: 10,
       },
       {
@@ -38,14 +38,26 @@ export const TournamentAchievement = ()=> {
         participants: 2,
         points: 5,
       },
+      {
+        league: "League G",
+        time: "7:00 PM",
+        participants: 4,
+        points: 14,
+      },
+      {
+        league: "League H",
+        time: "3:00 PM",
+        participants: 2,
+        points: 5,
+      },
     ];
     
   
     return (
-      <div className="w-full p-6 rounded-md bg-[var(--color-card-background)] text-white">
+      <div className="w-full p-6 rounded-md bg-[var(--color-card-background)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[var(--color-accent)]">
         <h2 className="text-xl font-normal mb-6">Tournament Achievement</h2>
   
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 lg:px-4">
           {tournaments.map((tournament) => (
             <TournamentCard  tournament={tournament} />
           ))}
@@ -65,7 +77,7 @@ export const TournamentAchievement = ()=> {
   
   function TournamentCard({ tournament }: TournamentProps) {
    
-    const participantAvatars = Array(tournament.participants)
+    const participantAvatars = Array(tournament.participants > 5 ? 5 : tournament.participants)
   .fill(null)
   .map((_, i) => {
     // Generate a random gender and ID (0-99)
@@ -89,7 +101,7 @@ export const TournamentAchievement = ()=> {
     return (
       <div className="p-3 rounded-md bg-[var(--color-card-history)] border border-[var(--color-card-border)]">
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-lg font-semibold">{tournament.league}</h3>
+          <h3 className="text-lg font-semibold text-[#23dff1]">{tournament.league}</h3>
           <span className="text-sm text-gray-300">{tournament.time}</span>
         </div>
   

@@ -6,6 +6,6 @@ export const Settings = () => {
 
 
     return (
-        <Layout children={<div class='text-white'>Settings</div>} />
+        <Layout  title="Settings" children={<div class='text-white'>Settings</div>} />
     )
 }

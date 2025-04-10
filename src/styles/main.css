@@ -7,7 +7,7 @@
 {
     --color-primary: #181C38;
     --color-secondary: #4394ff;
-    --color-accent: #AB43CB;
+    --color-accent: #00ffff83;
     --color-success: #1AA52A;
     --color-light: #f2f2f2;
     --color-dark: #000000;
@@ -17,7 +17,6 @@
     --color-gray-medium: #b3b3b3;
     --color-gray-dark: #808080;
     --color-gray-darker: #666666;
-    
     --color-card-background: #151636dd;
     --color-card-history: #1a1b4b;
     --color-card-border: #2a2b6b;
@@ -25,6 +24,7 @@
 }
 body
 {
+  background-color: var(--color-primary);
   font-family: "Play", sans-serif;
 }
 h2 {

@@ -81,7 +81,7 @@ export const Dashboard = () => {
       score: "2 - 0",
     },
   ];
-  
+
   const matches2 = [
     {
       time: "6:15 PM",
@@ -120,20 +120,21 @@ export const Dashboard = () => {
       score: "0 - 2",
     },
   ];
-  
-  
+
+
   return (
     <Layout
+      title="Home"
       children={
         <div className="w-full flex flex-col text-fuchsia-50 ">
-          <h1 className="px-2 py-3 text-2xl font-semibold xl:px-24 md:px-10 ">Home Page</h1>
-          <main className="xl:px-14 flex flex-row justify-between w-full h-[90vh] md:flex-col lg:flex-row sm:flex-col md:px-10 overflow-y-auto ">
-            <div className='lg:w-1/2  flex flex-col p-2 gap-6 lg:justify-normal md:justify-normal md:w-full sm:w-full sm:justify-center sm:items-center '>
-              <div className="achievements w-full">
-               <AchievementsDashboard winRate={20} level={17} loseRate={5.7} />
+
+          <main className="w-full xl:px-14 flex flex-row justify-between h-[92vh] md:flex-col lg:flex-row sm:flex-col xs:flex-col md:px-10 overflow-y-auto mx-auto">
+            <div className='lg:w-1/2 flex flex-col p-2 gap-6 lg:justify-normal md:justify-normal md:w-full sm:w-full sm:justify-center sm:items-center md:p-2'>
+              <div className="achievements lg:w-full xs:w-full">
+                <AchievementsDashboard winRate={20} level={17} loseRate={5.7} />
               </div>
-              <div className="a-history mt-2 w-full h-full overflow-y-auto">
-              <AchievementHistory title="Achievement History" matches={matches}/>
+              <div className="a-history mt-2 h-full lg:w-full overflow-y-auto">
+                <AchievementHistory title="Achievement History" matches={matches} />
               </div>
             </div>
 
@@ -141,12 +142,12 @@ export const Dashboard = () => {
               <div className="a-tournaments w-full">
                 <TournamentAchievement />
               </div>
-              <div className="w-full bot-profile flex flex-row gap-3 md:flex-col sm:flex-col xl:flex-row ">
-                <div className="bot w-full mt-2 overflow-y-auto">
-                <AchievementHistory title="Achievement Bot" matches={matches2}/>
+              <div className="w-full bot-profile flex flex-row gap-3 md:flex-col sm:flex-col xs:flex-col xl:flex-row ">
+                <div className="bot w-full  overflow-y-auto p-2">
+                  <AchievementHistory title="Achievement Bot" matches={matches2} />
                 </div>
                 <div className="profile w-full mt-2">
-                 <ProfileHeader />
+                  <ProfileHeader />
                 </div>
               </div>
             </div>
