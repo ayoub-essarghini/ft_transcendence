@@ -1,5 +1,5 @@
 
-import { h, useEffect, useState } from "../../core/roboto.js";
+import { h, useEffect, useRef, useState } from "../../core/roboto.js";
 import { auth } from "../../services/auth.js";
 import { getRouter } from "../../core/router/router-instance.js";
 
@@ -11,28 +11,21 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const isSubmitting = useRef(false);
 
-  useEffect(() => {
-    if (error) {
-      const timer = setTimeout(() => {
-        setError("");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [error]);
+
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-  
+    if (isLoading) return;
     setError("");
     setIsLoading(true);
 
     try {
       const success = await auth.login(username, password);
-      
+
       if (success) {
-        const router = getRouter();
-        router.navigate('/');
+        getRouter().navigate('/');
       } else {
         setError("Invalid username or password");
       }
@@ -40,6 +33,7 @@ export const Login = () => {
       setError("An error occurred during login");
       console.error("Login error:", err);
     } finally {
+      console.log("Login process completed");
       setIsLoading(false);
     }
   };
@@ -63,9 +57,9 @@ export const Login = () => {
       >
         <h1 class="text-5xl">Welcome back!</h1>
         <p class="text-gray-200">Welcome To Ping Pong game</p>
-        
+
         {error && <div class="text-red-500 bg-red-100 border border-red-400 rounded px-4 py-2 w-9/12">{error}</div>}
-        
+
         <form onSubmit={handleSubmit} class="w-full flex flex-col justify-center items-center gap-3 m-auto z-10">
           <div class="w-9/12 flex flex-col gap-1">
             <label >Username</label>
@@ -73,9 +67,9 @@ export const Login = () => {
               autocomplete="off"
               class="w-full bg-transparent appearance-none outline-none border text-gray-200 border-gray-200 px-3 py-2.5 rounded-md focus:border-[var(--color-secondary)]"
               type="text"
-       
+
               value={username}
-              onInput={(e:any) => setUsername(e.target.value)}
+              onInput={(e: any) => setUsername(e.target.value)}
               placeholder="Username (use 'admin')"
             />
           </div>
@@ -84,9 +78,9 @@ export const Login = () => {
             <input
               class="w-full bg-transparent appearance-none outline-none border text-gray-200 border-gray-200 px-2 py-2.5 rounded-md focus:border-[var(--color-secondary)]"
               type="password"
-           
+
               value={password}
-              onInput={(e:any) => setPassword(e.target.value)}
+              onInput={(e: any) => setPassword(e.target.value)}
               placeholder="Password (use 'admin123')"
             />
           </div>
@@ -107,7 +101,7 @@ export const Login = () => {
             </button>
           </div>
         </form>
-        
+
         <div class="flex items-center justify-center my-1 w-full">
           <div class="w-20 border-t border-[#fff]"></div>
           <span class="mx-4 text-[#fff]">OR</span>

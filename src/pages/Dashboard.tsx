@@ -141,7 +141,7 @@ export const Dashboard = () => {
               <div className="a-tournaments w-full">
                 <TournamentAchievement />
               </div>
-              <div className="w-full bot-profile flex flex-row gap-3 md:flex-col sm:flex-col lg:flex-row">
+              <div className="w-full bot-profile flex flex-row gap-3 md:flex-col sm:flex-col xl:flex-row ">
                 <div className="bot w-full mt-2 overflow-y-auto">
                 <AchievementHistory title="Achievement Bot" matches={matches2}/>
                 </div>

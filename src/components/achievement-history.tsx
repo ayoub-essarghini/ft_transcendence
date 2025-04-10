@@ -41,7 +41,7 @@ function MatchHistoryCard({ match }: MatchProps) {
             className="w-8 h-8 rounded-full object-cover border-2 border-gray-700"
           />
           <span
-            className="text-sm font-medium w-[80px] truncate overflow-hidden whitespace-nowrap block tooltip"
+            className="text-sm font-medium w-[8rem] truncate overflow-hidden whitespace-nowrap block tooltip"
             data-tooltip={match.player1.name}
           >
             {match.player1.name}
@@ -49,7 +49,7 @@ function MatchHistoryCard({ match }: MatchProps) {
         </div>
       </div>
 
-      <div className="font-bold text-lg px-3 w-[100px]">{match.score}</div>
+      <div className="font-bold text-lg px-3 w-[10rem]">{match.score}</div>
 
       <div className="flex items-center space-x-2 relative">
         <span className="text-sm font-medium w-[80px] truncate overflow-hidden whitespace-nowrap block tooltip" data-tooltip={match.player2.name}>{match.player2.name}</span>
