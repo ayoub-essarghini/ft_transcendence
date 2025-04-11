@@ -24,7 +24,7 @@ export const ProfileCard = ({
 
   return (
     <div
-      className={`w-full relative flex flex-col ${isPrimary ? 'mb-12 shadow-md shadow-[var(--color-accent)]' : 'mb-0'} items-center p-6 rounded-xl transition-all duration-300 bg-[--color-card-border]`}
+      className={`w-full relative flex flex-col ${isPrimary ? 'mb-12 shadow-md shadow-[var(--color-accent)]' : 'mb-0'} items-center p-6 rounded-xl transition-all duration-300 bg-[--color-card-background] border border-[var(--color-card-border)] hover:shadow-lg hover:shadow-[#00ffff83]`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

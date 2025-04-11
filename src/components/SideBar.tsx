@@ -22,7 +22,7 @@ export const SideBar = () => {
     { path: "/chat", label: "Chat", icon: "public/assets/images/sideBar/chat.svg" },
     { path: "/game", label: "Game", icon: "public/assets/images/sideBar/paddle.svg" },
     { path: "/settings", label: "Settings", icon: "public/assets/images/sideBar/setting.svg" },
-    { path: "/logout", label: "Logout", icon: "public/assets/images/sideBar/logout.svg" },
+    // { path: "/logout", label: "Logout", icon: "public/assets/images/sideBar/logout.svg" },
   ];
   const handleLogout = (e: any) => {
     e.preventDefault();
@@ -34,8 +34,10 @@ export const SideBar = () => {
 
   return (
     <div class="flex flex-col items-center h-screen text-white p-3 gap-5 border-r border-[#ffffff59] shadow-md shadow-[var(--color-accent)]">
-      
-
+    
+    <div className="w-20 h-20 z-12">
+            <img src="public/assets/images/logo.png" alt="" />
+          </div>
       {navLinks.map((link) => {
 
         return (
@@ -47,7 +49,7 @@ export const SideBar = () => {
             <Link
               to={link.path == '/logout' ? '#' : link.path}
               key={link.label}
-              onClick={link.path === '/logout' ? (e: any) => handleLogout(e) : undefined}
+           
               className={`flex p-4 rounded-xl transition-all duration-300
               ${link.path === '/logout' ? 'absolute bottom-10' : 'relative'}
             ${activePath === link.path

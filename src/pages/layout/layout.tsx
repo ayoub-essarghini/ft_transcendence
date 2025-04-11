@@ -22,6 +22,7 @@ export const Layout = ({ children, title }: { children: any, title?: string }) =
   }, []);
 
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -35,30 +36,59 @@ export const Layout = ({ children, title }: { children: any, title?: string }) =
       </div>
       <div className="w-full h-screen flex flex-col z-10">
         <div className="flex flex-row justify-between">
+          
           <h1 className="py-4 text-2xl font-semibold xl:px-16 md:px-10 text-white">{title}</h1>
 
-          <div className="relative flex items-center justify-center right-32 cursor-pointer" onClick={toggleDropdown}>
-            {/* Notification Badge */}
-            <div className="badge bg-red-500 translate-x-2 absolute top-2 right-0 font-semibold text-white rounded-full p-2 h-5 w-5 flex items-center justify-center z-10">
-              <span className='text-[0.8rem]'>+9</span>
+          <div className="flex flex-row items-center justify-center gap-6 px-4 -translate-x-20 z-40">
+
+            <div className="relative flex items-center justify-center top-1 cursor-pointer" onClick={toggleDropdown}>
+              <div className="badge bg-[var(--color-secondary)] translate-x-2 absolute top-2 right-0 font-semibold text-white rounded-full p-2 h-5 w-5 flex items-center justify-center z-10">
+                <span className='text-[0.8rem]'>+9</span>
+              </div>
+
+              <i
+                className="fa-solid py-4 fa-bell text-2xl text-white"
+
+              ></i>
+
+              {showDropdown && (
+                <div className="absolute top-12 right-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-20 justify-center items-center">
+                  <ul className="py-2 text-sm text-gray-700 items-center">
+                    <li className="px-4 py-2 hover:bg-gray-100 items-center">No Notification</li>
+
+                  </ul>
+                </div>
+              )}
             </div>
 
-            {/* Bell Icon */}
-            <i
-              className="fa-solid py-4 fa-bell text-2xl text-white"
+            <div className="profile cursor-pointer flex flex-row justify-center items-center gap-2" onClick={() => setShowProfile(!showProfile)}>
+              <div className="w-10 h-10 rounded-full border border-[var(--color-secondary)] overflow-hidden items-center justify-center">
 
-            ></i>
+                <img src="https://randomuser.me/api/portraits/men/20.jpg" alt="profile" />
 
-            {/* Dropdown */}
-            {showDropdown && (
-              <div className="absolute top-12 right-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-20 justify-center items-center">
-                <ul className="py-2 text-sm text-gray-700 items-center">
-                  <li className="px-4 py-2 hover:bg-gray-100 items-center">No Notification</li>
-
-                </ul>
               </div>
-            )}
+
+              <div className="flex flex-row items-center gap-1 relative ">
+                <span className="text-[1rem] font-semibold cursor-pointer text-white">Ahmed Ali</span>
+                <i class="fa-solid fa-caret-down text-white text-sm"></i>
+                {showProfile && (
+                  <div className="absolute top-6 -right-5 mt-2 w-36 bg-white rounded-lg shadow-lg z-20 justify-center items-center">
+                    <ul className="py-1 text-sm text-gray-700 items-center">
+                      <li className="px-2 py-1 hover:bg-gray-100 items-center rounded-lg"><i class="fa-solid fa-user mr-2"></i> Profile</li>
+                      <li className="px-2 py-1 hover:bg-gray-100 items-center rounded-lg"><i class="fa-solid fa-gear mr-2"></i>Settings</li>
+                      <li className="px-2 py-1 hover:bg-gray-100 items-center rounded-lg"><i class="fa-solid fa-right-from-bracket mr-2"></i> Logout</li>
+
+
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+            </div>
+
           </div>
+
+
         </div>
 
         <div className="w-full animate-fade-in-up z-10">{children}</div>
