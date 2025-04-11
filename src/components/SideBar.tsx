@@ -11,7 +11,7 @@ export const SideBar = () => {
     const updateActivePath = () => {
       setActivePath(window.location.pathname);
     };
-    console.log('activePath', activePath);
+    // console.log('activePath', activePath);
     updateActivePath();
 
   }, []);
@@ -33,23 +33,23 @@ export const SideBar = () => {
 
 
   return (
-    <div class="flex flex-col items-center h-screen text-white p-3 gap-5 border-r border-[#ffffff59] shadow-md shadow-[var(--color-accent)]">
-    
-    <div className="w-20 h-20 z-12">
-            <img src="public/assets/images/logo.png" alt="" />
-          </div>
+    <div class="flex flex-col items-center h-screen text-white p-1 gap-5 border-r border-[#ffffff59] shadow-md shadow-[var(--color-accent)]">
+
+      <div className="w-20 h-20 z-12">
+        <img src="public/assets/images/logo.png" alt="" />
+      </div>
       {navLinks.map((link) => {
 
         return (
           <div className="flex justify-center items-center flex-row gap-2" >
             {link.path === activePath && (
-              <div className="w-1 h-10 mx-1 bg-[#fff] rounded-lg absolute transition-all duration-300 ease-in-out " style={{ left: '0' }} />
+              <div className="w-1 h-8 mx-2 bg-[#fff] rounded-lg absolute transition-all duration-300 ease-in-out " style={{ left: '0' }} />
             )}
 
             <Link
               to={link.path == '/logout' ? '#' : link.path}
               key={link.label}
-           
+
               className={`flex p-4 rounded-xl transition-all duration-300
               ${link.path === '/logout' ? 'absolute bottom-10' : 'relative'}
             ${activePath === link.path
@@ -57,7 +57,7 @@ export const SideBar = () => {
                   : 'bg-[var(--color-primary)] hover:bg-gradient-to-tl hover:from-[#001AFF] hover:to-[var(--color-accent)] shadow-sm shadow-[#0fff]  '}
                 }`}
               children={<div className="flex justify-start items-center gap-4 relative group">
-                 <img src={link.icon} alt={link.label} className="h-5 w-5 text-white" />
+                <img src={link.icon} alt={link.label} className="h-5 w-5 text-white" />
                 <span className="translate-x-14 text-sm hidden absolute text-black transition-all duration-500 ease-in-out bg-white px-2 py-1 rounded-lg group-hover:flex justify-start z-10">{link.label}</span>
               </div>}
             />

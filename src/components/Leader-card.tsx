@@ -24,12 +24,12 @@ export const ProfileCard = ({
 
   return (
     <div
-      className={`w-full relative flex flex-col ${isPrimary ? 'mb-12 shadow-md shadow-[var(--color-accent)]' : 'mb-0'} items-center p-6 rounded-xl transition-all duration-300 bg-[--color-card-background] border border-[var(--color-card-border)] hover:shadow-lg hover:shadow-[#00ffff83]`}
+      className={`w-full relative flex flex-col ${isPrimary ? 'lg:mb-12 shadow-md shadow-[var(--color-accent)]' : 'mb-0'} items-center p-6 rounded-xl transition-all duration-300 bg-[--color-card-background] border border-[var(--color-card-border)] hover:shadow-lg hover:shadow-[#00ffff83]`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative">
-        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-navy-700">
+        <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-navy-700">
           <img
             src={ profileImage}
             alt={`${name}'s profile`}
@@ -45,7 +45,7 @@ export const ProfileCard = ({
 
       <div className="flex justify-center mt-2 space-x-2">
         {Array.from({ length: badgeCount }).map((_, index) => (
-          <div key={index} className="w-8 h-8">
+          <div key={index} className="w-6 h-6">
             <img src="public/assets/images/sideBar/star.svg" alt="" />
           </div>
         ))}

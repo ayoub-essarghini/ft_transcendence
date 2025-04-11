@@ -66,10 +66,9 @@ export const Leaderboard = () => {
 
   return (
     <Layout  title="Leaderboard" children={
-
-      <div className="h-auto overflow-auto">
-        <div className="flex items-center justify-center bg-navy-950 px-20 py-10">
-          <div className="w-full flex flex-row justify-around items-center gap-6 lg:mx-32 md:mx-10 sm:mx-5 lg:flex-row md:flex-row xs:mx-2 sm:flex-col xs:flex-col ">
+      <div className="h-auto overflow-y-auto p-2">
+        <div className="flex items-center justify-center bg-navy-950 px-20 ">
+          <div className="w-full flex flex-row justify-around items-center gap-8 lg:mx-32 md:mx-10 sm:mx-5 lg:flex-row md:flex-row xs:mx-2 sm:flex-col xs:flex-col ">
 
 
             <ProfileCard
@@ -106,8 +105,8 @@ export const Leaderboard = () => {
 
 
 
-        <div className="flex juscetify-center px-10">
-          <div className="w-full max-w-5xl mx-auto bg-[var(--color-card-background)] rounded-xl p-5 text-white font-sans">
+        <div className="flex juscetify-center lg:px-52 md:px-32 sm:px-10 xs:px-5 mt-10">
+          <div className="w-full mx-auto bg-[var(--color-card-background)] rounded-lg p-5 text-white font-sans">
             {/* Header */}
             <div className="flex items-center bg-[var(--color-card-history)] rounded-lg p-4 mb-4">
 
@@ -128,7 +127,7 @@ export const Leaderboard = () => {
                     <img
                       src={player.avatar || "/placeholder.svg"}
                       alt={player.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-10 h-10 rounded-full object-cover"
                     />
                   </div>
                   <div className="w-1/6 text-center font-semibold pl-10">#{player.rank}</div>

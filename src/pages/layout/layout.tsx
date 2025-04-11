@@ -91,7 +91,7 @@ export const Layout = ({ children, title }: { children: any, title?: string }) =
 
         </div>
 
-        <div className="w-full animate-fade-in-up z-10">{children}</div>
+        <div className="w-full animate-fade-in-up z-10 h-screen overflow-auto">{children}</div>
       </div>
       <div
         className="w-[200px] h-[200px] rounded-full bg-[#00aeff91] blur-[6rem] z-0 transition-all duration-200 ease-out pointer-events-none"
