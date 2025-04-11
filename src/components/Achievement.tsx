@@ -8,7 +8,7 @@ export default function AchievementsDashboard({winRate, level, loseRate}: {winRa
   }, [])
   
   return (
-    <div className="w-full max-w-lg p-6 rounded-md bg-[var(--color-card-background)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[#00ffff83]">
+    <div className="w-full max-w-lg p-6 rounded-md border border-[var(--color-card-border)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[#00ffff83]">
       <h2 className="text-lg font-normal mb-4">Achievements</h2>
       <div className="flex justify-between items-center gap-3">
         <ProgressCircle percentage={winRate ?? 0} color="cyan" label="Win" animate={animate} />

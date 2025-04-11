@@ -54,7 +54,7 @@ export const TournamentAchievement = ()=> {
     
   
     return (
-      <div className="w-full p-6 rounded-md bg-[var(--color-card-background)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[var(--color-accent)]">
+      <div className="w-full p-6 rounded-md border border-[var(--color-card-border)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[var(--color-accent)]">
         <h2 className="text-xl font-normal mb-6">Tournament Achievement</h2>
   
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 lg:px-4">

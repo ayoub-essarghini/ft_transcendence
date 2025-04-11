@@ -20,7 +20,7 @@ export const SideBar = () => {
     { path: "/", label: "Home", icon: "public/assets/images/sideBar/home.svg" },
     { path: "/board", label: "Leaderboard", icon: "public/assets/images/sideBar/rank.svg" },
     { path: "/chat", label: "Chat", icon: "public/assets/images/sideBar/chat.svg" },
-    { path: "/game", label: "Game", icon: "public/assets/images/sideBar/game.svg" },
+    { path: "/game", label: "Game", icon: "public/assets/images/sideBar/paddle.svg" },
     { path: "/settings", label: "Settings", icon: "public/assets/images/sideBar/setting.svg" },
     { path: "/logout", label: "Logout", icon: "public/assets/images/sideBar/logout.svg" },
   ];
@@ -33,10 +33,8 @@ export const SideBar = () => {
 
 
   return (
-    <div class="flex flex-col items-center h-screen text-white p-3 gap-5 border-r border-[#ffffff59] shadow-md shadow-[var(--color-accent)] ">
-      <div class="flex items-center justify-center">
-
-      </div>
+    <div class="flex flex-col items-center h-screen text-white p-3 gap-5 border-r border-[#ffffff59] shadow-md shadow-[var(--color-accent)]">
+      
 
       {navLinks.map((link) => {
 
@@ -57,7 +55,7 @@ export const SideBar = () => {
                   : 'bg-[var(--color-primary)] hover:bg-gradient-to-tl hover:from-[#001AFF] hover:to-[var(--color-accent)] shadow-sm shadow-[#0fff]  '}
                 }`}
               children={<div className="flex justify-start items-center gap-4 relative group">
-                <img src={link.icon} alt={link.label} className="h-5 w-5 text-white" />
+                 <img src={link.icon} alt={link.label} className="h-5 w-5 text-white" />
                 <span className="translate-x-14 text-sm hidden absolute text-black transition-all duration-500 ease-in-out bg-white px-2 py-1 rounded-lg group-hover:flex justify-start z-10">{link.label}</span>
               </div>}
             />

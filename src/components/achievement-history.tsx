@@ -2,7 +2,7 @@ import { h } from "../core/roboto.js"
 
 export const AchievementHistory = ({ title, matches }: { title: string; matches: MatchProps['match'][] }) => {
   return (
-    <div className="w-full h-auto overflow-y-auto max-w-lg p-6 rounded-md bg-[var(--color-card-background)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[var(--color-accent)]">
+    <div className="w-full h-auto overflow-y-auto max-w-lg p-6 rounded-md border border-[var(--color-card-border)] text-white transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[var(--color-accent)]">
       <h2 className="text-lg font-normal mb-6">{title}</h2>
 
       <div className="space-y-4">

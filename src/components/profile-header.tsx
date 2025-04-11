@@ -2,7 +2,7 @@ import { h } from "../core/roboto.js"
 
 export const ProfileHeader = () => {
     return (
-        <div className="w-10/12 rounded-lg bg-[var(--color-card-background)] text-white overflow-hidden transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[#00ffff83]">
+        <div className="w-10/12 rounded-lg border border-[var(--color-card-border)] text-white overflow-hidden transition-shadow duration-200 ease-in-out hover:shadow-md hover:shadow-[#00ffff83]">
 
             <div className="relative pt-4 px-4 pb-6">
 
