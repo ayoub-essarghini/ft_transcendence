@@ -106,7 +106,7 @@ export const Leaderboard = () => {
 
 
         <div className="flex juscetify-center lg:px-52 md:px-32 sm:px-10 xs:px-5 mt-10">
-          <div className="w-full mx-auto bg-[var(--color-card-background)] rounded-lg p-5 text-white font-sans">
+          <div className="w-full mx-auto border border-[var(--color-card-border)] rounded-lg p-5 text-white font-sans">
             {/* Header */}
             <div className="flex items-center bg-[var(--color-card-history)] rounded-lg p-4 mb-4">
 

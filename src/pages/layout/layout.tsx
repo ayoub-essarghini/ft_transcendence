@@ -30,7 +30,7 @@ export const Layout = ({ children, title }: { children: any, title?: string }) =
 
   return (
     <div className="w-full h-auto flex bg-[var(--color-card-background)] relative overflow-hidden">
-      <div className="z-10">
+      <div className="z-50 xs:hidden sm:hidden lg:flex md:flex">
 
         <SideBar />
       </div>
