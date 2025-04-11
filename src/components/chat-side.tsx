@@ -1,76 +1,120 @@
-import { h, useState } from "../core/roboto.js"
+import { h, useEffect, useState } from "../core/roboto.js"
 import ChatConversation from "./chat-content.js";
 
-export const ChatSide = (children:any) => {
+export const ChatSide = () => {
     const [activeTab, setActiveTab] = useState("messages")
     const [currentUser, setCurrentUser] = useState(0)
+    const [searchTerm, setSearchTerm] = useState("");
+    interface Message {
+        id: number;
+        name: string;
+        avatar: string;
+        time: string;
+        message: string;
+        unread: number;
+        online: boolean;
+    }
 
-    const messages = [
+    const [messages, setMessages] = useState<Message[]>([])
+    const messages2 = [
         {
             id: 1,
-            name: "Sophia",
-            avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-            time: "2:45 PM",
-            message: "Did you finish the task I sent earlier?",
+            name: "Alice Johnson",
+            avatar: "https://randomuser.me/api/portraits/women/1.jpg",
+            time: "06:02 PM",
+            message: "Of course! I’ll be there at 7 🕖",
             unread: 2,
+            online: true,
         },
         {
             id: 2,
-            name: "Liam",
-            avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-            time: "10:20 AM",
-            message: "Meet me at the usual place!",
+            name: "Mike Thompson",
+            avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+            time: "03:50 PM",
+            message: "Awesome! Let's celebrate later 😎",
             unread: 1,
+            online: false,
         },
         {
             id: 3,
-            name: "Olivia",
-            avatar: "https://randomuser.me/api/portraits/women/50.jpg",
-            time: "4:15 PM",
-            message: "I'm almost done, will ping you in a bit.",
+            name: "Sophie Lee",
+            avatar: "https://randomuser.me/api/portraits/women/3.jpg",
+            time: "08:02 AM",
+            message: "You got this 💪",
             unread: 0,
+            online: true,
         },
         {
             id: 4,
-            name: "Noah",
-            avatar: "https://randomuser.me/api/portraits/men/17.jpg",
-            time: "9:30 AM",
-            message: "Yo! That movie was epic 😎",
+            name: "Daniel Kim",
+            avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+            time: "09:31 AM",
+            message: "Give me 5 minutes, just grabbing coffee ☕",
             unread: 3,
+            online: true,
         },
         {
             id: 5,
-            name: "Emma",
-            avatar: "https://randomuser.me/api/portraits/women/28.jpg",
-            time: "7:22 AM",
-            message: "Don't forget the meeting at 11.",
+            name: "Emma Wilson",
+            avatar: "https://randomuser.me/api/portraits/women/5.jpg",
+            time: "02:11 PM",
+            message: "Sure! Just a sec...",
             unread: 4,
+            online: false,
         },
         {
             id: 6,
-            name: "James",
-            avatar: "https://randomuser.me/api/portraits/men/76.jpg",
-            time: "11:59 AM",
-            message: "I'll be there in 10 mins.",
+            name: "Jason Rivera",
+            avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+            time: "05:34 PM",
+            message: "Perfect! Let’s squad up 🔥",
             unread: 0,
+            online: true,
         },
         {
             id: 7,
-            name: "Ava",
-            avatar: "https://randomuser.me/api/portraits/women/55.jpg",
-            time: "3:03 PM",
-            message: "Hey! Just checking in 😊",
+            name: "Nina Patel",
+            avatar: "https://randomuser.me/api/portraits/women/7.jpg",
+            time: "01:01 PM",
+            message: "Sure, what’s up?",
             unread: 6,
+            online: false,
         },
     ];
+    useEffect(() => {
+        // Simulate API call
+        setMessages(messages)
+    }, [])
+
+    useEffect(() => {
+        handleSearch(searchTerm);
+    }, [searchTerm]);
+
+    const handleSearch = (term: string) => {
+        if (!term.trim()) {
+            setMessages(messages2);
+            return;
+        }
+        
+        const filteredMessages = messages2.filter((message) =>
+            message.name.toLowerCase().includes(term.toLowerCase())
+        );
+
+        setMessages(filteredMessages);
+    };
 
 
     return (
         <div className="flex flex-row w-full ">
-            <div className="w-1/4 flex flex-col h-[93vh] bg-[#1e1e4e69] text-white">
+            <div className="w-1/4 flex flex-col h-[93vh] bg-[#1e1e4e69] text-white border-r border-[var(--color-card-border)]">
                 {/* Search bar */}
                 <div className="p-4 border-b border-[#2a2a60]">
-                    <input type="text" className="outline-none border border-[#ffffff69] rounded-md py-2 px-2 text-sm text-white  bg-transparent w-full" placeholder="Find or Start a conversation" />
+                    <input type="text" className="outline-none border border-[#ffffff69]
+                     rounded-md py-2 px-2 text-sm text-white 
+                    bg-transparent w-full"
+                        placeholder="Find or Start a conversation"
+                        onInput={(e: any) => { setSearchTerm(e.target.value) }}
+                    />
                 </div>
 
                 {/* Tabs */}
@@ -101,7 +145,7 @@ export const ChatSide = (children:any) => {
                         <div
                             onClick={() => {
                                 setCurrentUser(index)
-                              
+
                             }}
                             key={message.id}
                             className="flex items-center p-3 border-b border-[#2a2a60] hover:bg-[#2a2a60c5] cursor-pointer"
@@ -112,7 +156,7 @@ export const ChatSide = (children:any) => {
                                     alt={message.name}
                                     className="w-8 h-8 rounded-full bg-gray-700"
                                 />
-                                <div className={`absolute bottom-0 right-0 w-3 h-3 ${index % 2 == 0 ? 'bg-green-500' : 'bg-gray-500'} rounded-full border-2 border-[#1e1e4e]`}></div>
+                                <div className={`absolute bottom-0 right-0 w-3 h-3 ${message.online == true ? 'bg-green-500' : 'bg-gray-500'} rounded-full border-2 border-[#1e1e4e]`}></div>
                             </div>
                             <div className="ml-3 flex-1 relative">
                                 <div className="flex justify-between">
@@ -145,10 +189,10 @@ export const ChatSide = (children:any) => {
                 </div>
             </div>
 
-        {/* Chat content will go here */}
-        <div className="w-full ">
-            <ChatConversation id={currentUser} />
-        </div>
+            {/* Chat content will go here */}
+            <div className="w-full ">
+                <ChatConversation id={currentUser} />
+            </div>
         </div>
 
     )
